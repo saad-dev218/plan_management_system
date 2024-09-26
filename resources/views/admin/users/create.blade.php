@@ -59,7 +59,7 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $("#edit-user-form").validate();
+            $("#manage-user-form").validate();
         });
     </script>
 @endpush

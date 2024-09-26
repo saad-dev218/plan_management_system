@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Manage Plans')
+@section('title', 'Payments')
 @section('content')
     <div class="container">
         @include('components.alerts')

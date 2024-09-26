@@ -17,7 +17,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Plan</th>
-                            <th>Payment Status</th>
+                            <th>Subscription Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>

@@ -41,9 +41,12 @@
                         <select class="form-control select2" name="features[]" data-placeholder="Select Features"
                             multiple="multiple" required>
                             @foreach ($features as $feature)
-                                <option value="{{ $feature->id }}">{{ $feature->name }}</option>
+                                <option value="{{ $feature->id }}"
+                                    {{ old('features') ? (in_array($feature->id, old('features')) ? 'selected' : '') : '' }}>
+                                    {{ $feature->name }}</option>
                             @endforeach
                         </select>
+                        <div class="text-danger mt-2" id="features-error"></div>
                         @error('features')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
@@ -65,7 +68,27 @@
                 placeholder: 'Select Features',
                 allowClear: true,
             });
-            $("#create-plan-form").validate();
+
+            $("#create-plan-form").validate({
+                rules: {
+                    'features[]': {
+                        required: true,
+                        minlength: 1
+                    }
+                },
+                messages: {
+                    'features[]': {
+                        required: "Please select at least one feature.",
+                    }
+                },
+                errorPlacement: function(error, element) {
+                    if (element.attr("name") === "features[]") {
+                        error.appendTo("#features-error");
+                    } else {
+                        error.insertAfter(element);
+                    }
+                }
+            });
         });
     </script>
 @endpush
